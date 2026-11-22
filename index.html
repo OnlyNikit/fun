@@ -57,14 +57,14 @@ h1{font-family:"Yatra One",Georgia,serif;font-weight:400;margin:.2em 0 .1em;line
 .bubble::after{content:"";position:absolute;left:3.2em;bottom:-.7em;width:1em;height:1em;background:var(--ivory);border-right:.14em solid var(--maroon);border-bottom:.14em solid var(--maroon);transform:rotate(45deg)}
 @keyframes bob{50%{transform:translateY(-.5em)}}
 .line{display:block;overflow:hidden;white-space:nowrap;width:0;border-right:.12em solid transparent}
-.l2{animation:type2 1.5s steps(25,end) 2.6s forwards,caret 1s step-end 2.6s 4}
-.l1{animation:type1 1.6s steps(24,end) .8s forwards,caret 1s step-end .8s 2}
+.l2{animation:type2 1.5s steps(25,end) calc(var(--t0) + 2.6s) forwards,caret 1s step-end calc(var(--t0) + 2.6s) 4}
+.l1{animation:type1 1.6s steps(24,end) calc(var(--t0) + .8s) forwards,caret 1s step-end calc(var(--t0) + .8s) 2}
 @keyframes type1{to{width:23.5ch}}
 @keyframes type2{to{width:24.5ch}}
 @keyframes caret{50%{border-right-color:var(--maroon)}}
 
 /* train comes from the right and stops near him */
-.train{position:absolute;right:1em;bottom:4.9em;width:25em;height:10em;z-index:4;animation:arrive 7s cubic-bezier(.16,.8,.25,1) 2.2s both}
+.train{position:absolute;right:1em;bottom:4.9em;width:25em;height:10em;z-index:4;animation:arrive 7s cubic-bezier(.16,.8,.25,1) calc(var(--t0) + 2.2s) both}
 @keyframes arrive{from{transform:translateX(105vw)}to{transform:translateX(0)}}
 .boiler{position:absolute;left:0;bottom:1.4em;width:11em;height:5em;background:linear-gradient(180deg,#2d6e5e,#1c463c);border:.18em solid var(--maroon);border-radius:2.4em .6em .4em .4em}
 .cab{position:absolute;left:11em;bottom:1.4em;width:4.6em;height:7em;background:#8a2338;border:.18em solid var(--maroon);border-radius:.5em .5em .2em .2em}
@@ -75,13 +75,13 @@ h1{font-family:"Yatra One",Georgia,serif;font-weight:400;margin:.2em 0 .1em;line
 .coach{position:absolute;left:16.4em;bottom:1.4em;width:8.6em;height:5.6em;background:linear-gradient(180deg,var(--gold),#e39a22);border:.18em solid var(--maroon);border-radius:.5em}
 .coach::before{content:"MOKSHA EXPRESS";position:absolute;left:0;right:0;top:.5em;text-align:center;font:700 .62em "Mukta",sans-serif;color:var(--maroon);letter-spacing:.04em}
 .coach::after{content:"";position:absolute;left:.8em;right:.8em;bottom:.8em;height:1.4em;background:repeating-linear-gradient(90deg,#fff3d6 0 1.3em,transparent 1.3em 1.9em);border-radius:.2em}
-.w{position:absolute;bottom:.1em;width:2.4em;height:2.4em;border-radius:50%;background:radial-gradient(circle,#ffc857 0 14%,#3a1c10 15% 100%);border:.14em solid var(--maroon);animation:roll .5s linear 2.2s 14}
+.w{position:absolute;bottom:.1em;width:2.4em;height:2.4em;border-radius:50%;background:radial-gradient(circle,#ffc857 0 14%,#3a1c10 15% 100%);border:.14em solid var(--maroon);animation:roll .5s linear calc(var(--t0) + 2.2s) 14}
 .w::after{content:"";position:absolute;left:50%;top:6%;width:.18em;height:88%;margin-left:-.09em;background:#ffc857;box-shadow:0 0 0 0 #ffc857}
 @keyframes roll{to{transform:rotate(360deg)}}
-.smoke{position:absolute;left:1.2em;bottom:8.6em;width:2.6em;height:2.6em;border-radius:50%;background:rgba(255,243,214,.8);opacity:0;animation:puff 2.6s ease-out 3s infinite}
-.smoke.b{animation-delay:3.9s;left:.6em}.smoke.c{animation-delay:4.8s;left:1.8em}
+.smoke{position:absolute;left:1.2em;bottom:8.6em;width:2.6em;height:2.6em;border-radius:50%;background:rgba(255,243,214,.8);opacity:0;animation:puff 2.6s ease-out calc(var(--t0) + 3s) infinite}
+.smoke.b{animation-delay:calc(var(--t0) + 3.9s);left:.6em}.smoke.c{animation-delay:calc(var(--t0) + 4.8s);left:1.8em}
 @keyframes puff{0%{opacity:.85;transform:translate(0,0) scale(.5)}100%{opacity:0;transform:translate(-3em,-7em) scale(2.4)}}
-.hooter{position:absolute;right:11em;bottom:calc(100% + .2em);z-index:6;padding:.5em .9em;border-radius:1em;background:var(--gold);color:var(--maroon);font-weight:700;border:.14em solid var(--maroon);opacity:0;animation:pop .6s ease-out 9.4s forwards;white-space:nowrap}
+.hooter{position:absolute;right:11em;bottom:calc(100% + .2em);z-index:6;padding:.5em .9em;border-radius:1em;background:var(--gold);color:var(--maroon);font-weight:700;border:.14em solid var(--maroon);opacity:0;animation:pop .6s ease-out calc(var(--t0) + 9.4s) forwards;white-space:nowrap}
 @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
 
 footer{position:absolute;left:0;right:0;bottom:0;z-index:6;display:flex;align-items:center;justify-content:center;gap:.8em;padding:.6em 1em;font-size:1.05em;color:var(--ivory);opacity:.9}
@@ -136,9 +136,63 @@ html{scroll-snap-type:y proximity}
 #page2 .back{display:inline-block;margin:1rem 0 0 .6rem;padding:.45rem 1.1rem;border-radius:2rem;background:var(--gold);color:var(--maroon);font-weight:700;text-decoration:none}
 #page2 .p2foot{display:flex;align-items:center;justify-content:center;gap:.7rem;padding:1rem;opacity:.9}
 #page2 .p2foot .logo{width:1.9rem;height:1.9rem}
+
+/* ===== disclaimer loader ===== */
+:root{--t0:9.25s}
+#disclaimer{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:max(1.5rem,env(safe-area-inset-top,0px)) 1.5rem max(1.5rem,env(safe-area-inset-bottom,0px));
+  background:radial-gradient(ellipse at 50% 40%,#3a0f2a 0%,#150818 55%,#08030a 100%);
+  animation:dlout 0.9s ease 8.95s forwards}
+#disclaimer p{margin:0;max-width:34rem;text-align:center;font-family:"Mukta","Noto Sans Devanagari",system-ui,sans-serif;font-weight:700;
+  font-size:clamp(1.15rem,3.6vw,1.9rem);line-height:1.7;color:#fff3d6}
+#disclaimer .w1{display:inline-block;margin:0 .14em;opacity:.16;animation:wordin 0.55s ease forwards;animation-delay:calc(0.5s + var(--i) * 0.2s)}
+@keyframes wordin{from{opacity:.16}to{opacity:1;text-shadow:0 0 .7em rgba(255,200,87,.45)}}
+@keyframes dlout{to{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){
+  #disclaimer{animation-delay:4s!important}
+  #disclaimer .w1{animation:none!important;opacity:1}
+}
+
+/* ===== extra animation ===== */
+@keyframes fadeup{from{opacity:0;transform:translateY(2em)}to{opacity:1;transform:none}}
+@keyframes twinkle{0%,100%{opacity:.15}50%{opacity:1}}
+@keyframes drift{from{transform:translateX(-22em)}to{transform:translateX(calc(100vw + 22em))}}
+@keyframes breathe{to{transform:translateY(-.3em) scale(1.012)}}
+@keyframes sunpulse{to{transform:scale(1.07)}}
+@keyframes nudge{50%{transform:translateY(.3em)}}
+@keyframes floaty{to{transform:translateY(-.7em)}}
+@keyframes rise{0%{opacity:0;transform:translate(0,0)}15%{opacity:.95}100%{opacity:0;transform:translate(var(--dx),-26em)}}
+
+/* hero: starry sky, drifting clouds, content entrance, breathing Maharaj */
+#page1 .stars{position:absolute;inset:0;z-index:0;pointer-events:none}
+#page1 .stars::before,#page1 .stars::after{content:"";position:absolute;left:0;top:0;width:2px;height:2px;border-radius:50%}
+#page1 .stars::before{box-shadow:42vw 10vh 0 0 #fff3d6,84vw 4vh 0 0 #fff,69vw 7vh 0 0 #fff3d6,75vw 4vh 0 0 #ffd56e,28vw 3vh 0 0 #fff,56vw 27vh 0 0 #fff,31vw 6vh 0 0 #ffd56e,55vw 4vh 0 0 #ffd56e,16vw 15vh 0 0 #ffd56e,81vw 38vh 0 0 #fff,74vw 38vh 0 0 #fff3d6,7vw 15vh 0 0 #fff,72vw 9vh 0 0 #fff3d6,54vw 10vh 0 0 #ffd56e,16vw 37vh 0 0 #fff3d6,72vw 44vh 0 0 #fff,14vw 38vh 0 0 #ffd56e,82vw 13vh 0 0 #fff3d6,13vw 36vh 0 0 #ffd56e,9vw 37vh 0 0 #fff,80vw 14vh 0 0 #fff3d6,88vw 35vh 0 0 #fff3d6,41vw 30vh 0 0 #ffd56e,59vw 24vh 0 0 #fff3d6,32vw 51vh 0 0 #fff,90vw 50vh 0 0 #fff,11vw 37vh 0 0 #fff3d6,68vw 32vh 0 0 #fff3d6,94vw 29vh 0 0 #fff3d6,78vw 5vh 0 0 #fff,66vw 27vh 0 0 #fff,97vw 22vh 0 0 #fff,63vw 27vh 0 0 #fff,86vw 5vh 0 0 #ffd56e,74vw 51vh 0 0 #fff3d6,44vw 45vh 0 0 #fff3d6,77vw 32vh 0 0 #ffd56e,59vw 5vh 0 0 #fff,35vw 31vh 0 0 #ffd56e,86vw 5vh 0 0 #fff;animation:twinkle 3s ease-in-out infinite}
+#page1 .stars::after{box-shadow:94vw 45vh 0 0 #fff3d6,83vw 37vh 0 0 #ffd56e,58vw 19vh 0 0 #ffd56e,50vw 43vh 0 0 #fff3d6,3vw 30vh 0 0 #fff3d6,22vw 40vh 0 0 #fff,64vw 4vh 0 0 #fff,99vw 19vh 0 0 #fff,95vw 16vh 0 0 #fff3d6,51vw 32vh 0 0 #fff,22vw 29vh 0 0 #fff3d6,71vw 18vh 0 0 #fff,56vw 36vh 0 0 #fff3d6,91vw 27vh 0 0 #fff3d6,88vw 25vh 0 0 #fff,20vw 6vh 0 0 #fff,20vw 15vh 0 0 #ffd56e,30vw 1vh 0 0 #fff3d6,76vw 12vh 0 0 #fff3d6,37vw 1vh 0 0 #fff,54vw 35vh 0 0 #fff3d6,79vw 37vh 0 0 #fff3d6,17vw 45vh 0 0 #ffd56e,80vw 42vh 0 0 #ffd56e,95vw 4vh 0 0 #fff3d6,88vw 52vh 0 0 #ffd56e,51vw 26vh 0 0 #fff3d6,51vw 7vh 0 0 #fff3d6,82vw 26vh 0 0 #fff,25vw 5vh 0 0 #fff,57vw 11vh 0 0 #fff,44vw 39vh 0 0 #fff,14vw 1vh 0 0 #ffd56e,20vw 35vh 0 0 #fff;animation:twinkle 4.6s ease-in-out -2s infinite}
+#page1 .cloud{position:absolute;left:0;z-index:0;width:15em;height:3.4em;border-radius:50%;background:rgba(255,226,205,.2);filter:blur(.25em);pointer-events:none;animation:drift 70s linear infinite}
+#page1 .cloud::before{content:"";position:absolute;left:3em;top:-1.4em;width:7em;height:3.6em;border-radius:50%;background:inherit}
+#page1 .c1{top:20%;animation-duration:80s;animation-delay:-20s}
+#page1 .c2{top:34%;width:11em;animation-duration:60s;animation-delay:-48s;opacity:.8}
+#page1 .c3{top:10%;width:13em;animation-duration:95s;animation-delay:-70s;opacity:.7}
+#page1 .copy{animation:fadeup 1s ease var(--t0) both}
+#page1 .sit img{transform-origin:50% 100%;animation:breathe 5s ease-in-out infinite alternate}
+#page1 .sun{animation:sunpulse 4s ease-in-out infinite alternate}
+#page1 .go{animation:nudge 1.8s ease-in-out calc(var(--t0) + 1.5s) infinite}
+
+/* page 2: floating image, rising sparks, scroll reveal */
+#page2 .blessing{animation:floaty 6s ease-in-out infinite alternate}
+#page2 .sparks{position:absolute;inset:-6% -4% 0 -4%;z-index:3;pointer-events:none}
+#page2 .sparks i{position:absolute;bottom:2%;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;background:#ffe9a8;box-shadow:0 0 .7em .25em rgba(255,200,87,.8);opacity:0;animation:rise var(--t) linear var(--d) infinite}
+@supports (animation-timeline:view()){
+  #page2 .stage{animation:fadeup linear both;animation-timeline:view();animation-range:entry 0% entry 65%}
+  #page2 .cap{animation:fadeup linear both;animation-timeline:view();animation-range:entry 5% entry 75%}
+}
+@media (prefers-reduced-motion:reduce){
+  #page1 .copy,#page1 .sit img,#page1 .sun,#page1 .go,#page1 .cloud,#page2 .blessing,#page2 .stage,#page2 .cap{animation:none!important}
+  #page2 .sparks{display:none}
+}
 </style>
 </head>
 <body>
+<div id="disclaimer" role="alert" aria-label="☠️ Religious log aur easily offended souls kripya is website se door rahein, yeh sirf entertainment ke liye hai; agar feelings hurt hui toh bhagwan, shaitaan ya developer nahi, aap khud zimmedaar honge. 💀"><p aria-hidden="true"><span class="w1" style="--i:0">☠️</span> <span class="w1" style="--i:1">Religious</span> <span class="w1" style="--i:2">log</span> <span class="w1" style="--i:3">aur</span> <span class="w1" style="--i:4">easily</span> <span class="w1" style="--i:5">offended</span> <span class="w1" style="--i:6">souls</span> <span class="w1" style="--i:7">kripya</span> <span class="w1" style="--i:8">is</span> <span class="w1" style="--i:9">website</span> <span class="w1" style="--i:10">se</span> <span class="w1" style="--i:11">door</span> <span class="w1" style="--i:12">rahein,</span> <span class="w1" style="--i:13">yeh</span> <span class="w1" style="--i:14">sirf</span> <span class="w1" style="--i:15">entertainment</span> <span class="w1" style="--i:16">ke</span> <span class="w1" style="--i:17">liye</span> <span class="w1" style="--i:18">hai;</span> <span class="w1" style="--i:19">agar</span> <span class="w1" style="--i:20">feelings</span> <span class="w1" style="--i:21">hurt</span> <span class="w1" style="--i:22">hui</span> <span class="w1" style="--i:23">toh</span> <span class="w1" style="--i:24">bhagwan,</span> <span class="w1" style="--i:25">shaitaan</span> <span class="w1" style="--i:26">ya</span> <span class="w1" style="--i:27">developer</span> <span class="w1" style="--i:28">nahi,</span> <span class="w1" style="--i:29">aap</span> <span class="w1" style="--i:30">khud</span> <span class="w1" style="--i:31">zimmedaar</span> <span class="w1" style="--i:32">honge.</span> <span class="w1" style="--i:33">💀</span> </p></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <filter id="toon" color-interpolation-filters="sRGB">
     <feComponentTransfer>
@@ -150,6 +204,8 @@ html{scroll-snap-type:y proximity}
 </svg>
 
 <main class="hero" id="page1">
+  <div class="stars" aria-hidden="true"></div>
+  <div class="cloud c1" aria-hidden="true"></div><div class="cloud c2" aria-hidden="true"></div><div class="cloud c3" aria-hidden="true"></div>
   <nav>
     <div class="logo" role="img" aria-label="Maharaj logo"></div>
     <div class="brand">Chuddha Maharaj Ashram</div>
@@ -201,6 +257,7 @@ html{scroll-snap-type:y proximity}
   <div class="p2main">
     <div class="stage">
       <div class="floor"></div>
+      <div class="sparks" aria-hidden="true"><i style="--x:54%;--s:0.25em;--t:6s;--d:-3s;--dx:2em"></i><i style="--x:56%;--s:0.35em;--t:8s;--d:-5s;--dx:2em"></i><i style="--x:54%;--s:0.55em;--t:6s;--d:-1s;--dx:1em"></i><i style="--x:67%;--s:0.55em;--t:9s;--d:-4s;--dx:-3em"></i><i style="--x:26%;--s:0.25em;--t:8s;--d:-4s;--dx:1em"></i><i style="--x:28%;--s:0.25em;--t:7s;--d:-8s;--dx:-1em"></i><i style="--x:26%;--s:0.25em;--t:10s;--d:-4s;--dx:3em"></i><i style="--x:19%;--s:0.45em;--t:10s;--d:-5s;--dx:-2em"></i><i style="--x:53%;--s:0.35em;--t:10s;--d:-8s;--dx:2em"></i><i style="--x:50%;--s:0.35em;--t:10s;--d:-3s;--dx:-2em"></i><i style="--x:59%;--s:0.35em;--t:7s;--d:-8s;--dx:1em"></i><i style="--x:53%;--s:0.25em;--t:6s;--d:-4s;--dx:1em"></i><i style="--x:41%;--s:0.35em;--t:10s;--d:-5s;--dx:1em"></i><i style="--x:52%;--s:0.45em;--t:6s;--d:-3s;--dx:-3em"></i><i style="--x:37%;--s:0.55em;--t:7s;--d:-5s;--dx:-2em"></i><i style="--x:69%;--s:0.25em;--t:9s;--d:-5s;--dx:3em"></i></div>
       <div class="ring" aria-hidden="true">
         <svg viewBox="0 0 400 400">
           <defs><path id="circ" d="M200,200 m-170,0 a170,170 0 1,1 340,0 a170,170 0 1,1 -340,0"/></defs>
